@@ -3,6 +3,7 @@
 var express     = require('express');
 var bodyParser  = require('body-parser');
 var cors        = require('cors');
+var helmet      = require('helmet');
 
 var apiRoutes         = require('./routes/api.js');
 var fccTestingRoutes  = require('./routes/fcctesting.js');
@@ -14,7 +15,9 @@ app.use('/public', express.static(process.cwd() + '/public'));
 
 app.use(cors({origin: '*'})); //USED FOR FCC TESTING PURPOSES ONLY!
 
-app.use(bodyParser.json());
+app.use(helmet.noCache());
+
+app.use(bodyParser.json({ type: 'application/json'}));// USER Replaced this use call app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 //Index page (static HTML)

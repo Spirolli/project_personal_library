@@ -99,7 +99,7 @@ function assertionAnalyser(body) {
   if(!body) return "invalid assertion";
   // replace assertions bodies, so that they cannot
   // contain the word 'assertion'
-
+  
   var body = body.match(/(?:browser\s*\.\s*)?assert\s*\.\s*\w*\([\s\S]*\)/)[0];
   var s = replacer(body);
   // split on 'assertion'
